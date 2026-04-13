@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #0f172a, #020617);
+        color: #fff;
+        scroll-behavior: smooth;
+      }
+
+      header {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 60px;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(15px);
+        z-index: 1000;
+      }
+
+      header h1 {
+        color: #38bdf8;
+        font-weight: 700;
+      }
+
+      nav a {
+        margin-left: 25px;
+        text-decoration: none;
+        color: #fff;
+        font-size: 15px;
+        transition: 0.3s;
+        position: relative;
+      }
+
+      nav a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #38bdf8;
+        transition: 0.3s;
+      }
+
+      nav a:hover::after {
+        width: 100%;
+      }
+      nav a:hover {
+        color: #38bdf8;
+      }
+
+      section {
+        min-height: 100vh;
+        padding: 120px 60px 80px;
+      }
+
+      h2 {
+        font-size: 36px;
+        margin-bottom: 20px;
+        color: #38bdf8;
+      }
+
+      .hero {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .hero h2 {
+        font-size: 56px;
+        line-height: 1.2;
+      }
+      .hero span {
+        color: #38bdf8;
+      }
+
+      .hero p {
+        margin-top: 10px;
+        color: #cbd5f5;
+      }
+
+      .btn {
+        margin-top: 25px;
+        padding: 14px 28px;
+        border: none;
+        background: #38bdf8;
+        color: #000;
+        border-radius: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(56, 189, 248, 0.5);
+      }
+
+      .card-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+      }
+
+      .card {
+        background: #1e293b;
+        padding: 25px;
+        border-radius: 20px;
+        transition: 0.4s;
+        border: 1px solid transparent;
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        border: 1px solid #38bdf8;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      }
+
+      .skills span {
+        display: inline-block;
+        background: #38bdf8;
+        color: #000;
+        padding: 10px 18px;
+        border-radius: 30px;
+        margin: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        transition: 0.3s;
+      }
+
+      .skills span:hover {
+        transform: scale(1.1);
+      }
+
+      .project-card {
+        background: #1e293b;
+        border-radius: 20px;
+        overflow: hidden;
+        transition: 0.4s;
+        position: relative;
+      }
+
+      .project-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+      }
+
+      .project-card .content {
+        padding: 20px;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+      }
+
+      .project-card .btn {
+        margin-top: 10px;
+        padding: 8px 15px;
+        font-size: 13px;
+      }
+
+      form input,
+      form textarea {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        background: #1e293b;
+        color: #fff;
+        margin-bottom: 10px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 25px;
+        background: #020617;
+        color: #94a3b8;
+        font-size: 14px;
+      }
+
+      /* simple fade animation */
+      .fade {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: 0.8s;
+      }
+      .fade.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Portfolio</h1>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#vision">Vision</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section id="home" class="hero fade">
+      <div>
+        <h2>Hello, I'm <span>Riswandi, S.Kom</span></h2>
+        <p>Fullstack Developer</p>
+        <button class="btn" onclick="scrollToSection('projects')">
+          View My Work
+        </button>
+      </div>
+    </section>
+
+    <section id="about" class="fade">
+      <h2>About Me</h2>
+      <p>
+        I am a Web Developer specializing in Laravel with over 5 years of
+        experience in web development. I have strong expertise in building
+        efficient, scalable, and user-friendly applications, ranging from
+        company profile websites to complex data-driven systems. Throughout my
+        career, I have worked on various projects involving data processing,
+        system integration, and developing custom features tailored to client
+        needs. I primarily use Laravel as my main framework, supported by solid
+        skills in HTML, CSS, JavaScript, and database management. I have a
+        strong passion for clean code, application performance, and user
+        experience. For me, building an application is not just about making it
+        work, but also ensuring it is easy to use and delivers real value to
+        users. I am always eager to learn new technologies, stay up-to-date with
+        industry trends, and ready to contribute both independently and as part
+        of a team to create high-quality digital solutions.
+      </p>
+    </section>
+
+    <section id="skills" class="fade">
+      <h2>Skills</h2>
+      <div class="skills">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>TalwindCss</span>
+        <span>JavaScript</span>
+        <span>Laravel</span>
+        <span>MySQL</span>
+        <span>PosgresSql</span>
+        <span>ReactJs</span>
+        <span>RestFull Api</span>
+        <span>Git</span>
+        <span>Github</span>
+        <span>JWT</span>
+        <span>MVC</span>
+        <span>OOP</span>
+        <span>Nginx</span>
+        <span>DataTables</span>
+        <span>Instalation Computer</span>
+        <span>Network</span>
+        <span>Microsoft Excel</span>
+        <span>Microsoft Word</span>
+        <span>Microsoft Power Point</span>
+      </div>
+    </section>
+
+    <section id="vision" class="fade">
+      <h2>Vision</h2>
+      <div class="card">
+        <p>
+          My vision is to become a professional web developer who continuously
+          grows and adapts to technological advancements, while creating
+          innovative, efficient, and impactful digital solutions. I aim to build
+          applications that not only function well but also provide excellent
+          user experience and real value for users and businesses. By focusing
+          on clean code, scalability, and performance, I strive to contribute to
+          the development of high-quality systems that can solve real-world
+          problems. In the long term, I aspire to be part of meaningful
+          projects, collaborate with great teams, and help drive digital
+          transformation through modern web technologies.
+        </p>
+      </div>
+    </section>
+
+    <section id="education" class="fade">
+      <h2>Education</h2>
+      <div class="card-container">
+        <div class="card">
+          <h3>2017 - 2019</h3>
+          <p>Computer and Network Engineering</p>
+          <h3>SMK Negeri 1 Takalar</h3>
+        </div>
+        <div class="card">
+          <h3>2019 - 2023</h3>
+          <p>Informatics Engineering</p>
+          <h3>Dipa University Makassar</h3>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="fade">
+      <h2>Projects</h2>
+      <div class="card-container">
+        <div class="project-card">
+          <img src="img/bkd.png" />
+          <div class="content">
+            <h3>BKD</h3>
+            <p>Badan Kepegawaian Daerah</p>
+            <br />
+            <a
+              href="https://bkd.sulselprov.go.id/"
+              class="btn"
+              style="text-decoration: none"
+              >View</a
+            >
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="img/sisebar.png" />
+          <div class="content">
+            <h3>SI-SEBAR</h3>
+            <p>Sistem Informasi Sertifikasi</p>
+            <br />
+            <a
+              href="https://sisebar.sulselprov.go.id/log-in"
+              class="btn"
+              style="text-decoration: none"
+              >View</a
+            >
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="img/iga.png" />
+          <div class="content">
+            <h3>IGA</h3>
+            <p>Innovative Informasi Sertifikasi</p>
+            <br />
+            <a
+              href="https://iga.sulselprov.go.id/log-in"
+              class="btn"
+              style="text-decoration: none"
+              >View</a
+            >
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="img/siklik.png" />
+          <div class="content">
+            <h3>SI-KLIK</h3>
+            <p>Sistem Komuditas</p>
+            <br />
+            <a
+              href="https://siklik.limatekpro.id"
+              class="btn"
+              style="text-decoration: none"
+              >View</a
+            >
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="img/ppid.png" />
+          <div class="content">
+            <h3>PPID</h3>
+            <p>Portal Resmi PPID</p>
+            <br />
+            <a
+              href="https://ppid.sulselprov.go.id"
+              class="btn"
+              style="text-decoration: none"
+              >View</a
+            >
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="img/sismondak.png" />
+          <div class="content">
+            <h3>SISMONDAK</h3>
+            <p>Sistem Monitoring Dana</p>
+            <br />
+            <a
+              href="https://sismondak.sulselprov.go.id"
+              class="btn"
+              style="text-decoration: none"
+              >View</a
+            >
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="img/tppguru.png" />
+          <div class="content">
+            <h3>TPP Guru</h3>
+            <p>
+              Sistem Pelaporan TPP Dinas Pendidikan Pemerintah Provinsi Sulawesi
+              Selatan
+            </p>
+            <br />
+            <a
+              href="https://tppguru.sulselprov.go.id"
+              class="btn"
+              style="text-decoration: none"
+              >View</a
+            >
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="img/sulselprov.png" />
+          <div class="content">
+            <h3>Sulselprov</h3>
+            <p>Website Utama Pemerintah Sulawesi Selatan</p>
+            <br />
+            <a
+              href="https://sulselprov.go.id"
+              class="btn"
+              style="text-decoration: none"
+              >View</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="fade">
+      <h2>Contact</h2>
+      <form onsubmit="sendMessage(event)">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Message" required></textarea>
+        <button class="btn">Send</button>
+      </form>
+    </section>
+
+    <footer>
+      <p>© 2026 My Portfolio - Ready for Hiring 🚀</p>
+    </footer>
+
+    <script>
+      function scrollToSection(id) {
+        document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+      }
+
+      function sendMessage(e) {
+        e.preventDefault();
+        alert("Message sent!");
+      }
+
+      // animation on scroll
+      const fades = document.querySelectorAll(".fade");
+      window.addEventListener("scroll", () => {
+        fades.forEach((el) => {
+          const top = el.getBoundingClientRect().top;
+          if (top < window.innerHeight - 100) {
+            el.classList.add("show");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
